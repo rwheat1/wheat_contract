@@ -27,6 +27,8 @@ params:
     - Wednesday
     - Thursday
     - Friday
+    - Saturday
+    - Sunday
 ---
 
 ```{r setup, include=FALSE}
@@ -63,6 +65,20 @@ advdate <- function(weekonemonday,
     tmp <- paste0(unit, zadv, ", ", tmon, " - ", tfri)
   } else if (!is.null(assignment)) {
     if (assignment %in%
+        c("Sunday",
+          "sunday",
+          "s",
+          "sun",
+          "SUN")) {
+      tmp <- paste0(tsun)
+    } else if (assignment %in%
+        c("Saturday",
+          "saturday",
+          "s",
+          "sat",
+          "SAT")) {
+      tmp <- paste0(tsat)
+    } else if (assignment %in%
         c("Friday",
           "friday",
           "f",
